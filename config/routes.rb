@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # activity routes
   get    "activities",    to: "activities#index",    as: :activities
-  get    "new/activity",  to: "activities#new",      as: :new_activity
+  get    "activity/new",  to: "activities#new",      as: :new_activity
   post   "activity",      to: "activities#create",   as: :create_activity
   get    "activity/:id",  to: "activities#show",     as: :show_activity
   get    "activity/:id",  to: "activities#edit",     as: :edit_activity

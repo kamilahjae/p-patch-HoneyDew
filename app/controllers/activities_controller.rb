@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   def index
-    @activities = Activities.all
-  
+    @activities = Activity.all
+
   end
 
   def new
@@ -11,12 +11,12 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     if @activity.save
-      redirect_to show_activity_path
+      redirect_to show_activity_path(@activity)
     end
   end
 
   def show
-    @activity = Activity.find_by(params[:id])
+    @activity = Activity.find(params[:id])
   end
 
   def edit

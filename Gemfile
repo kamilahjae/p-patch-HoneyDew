@@ -47,9 +47,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
 
-gem 'nifty-generators'
-gem 'google-api-client', :require => 'google/api_client'
-gem 'omniauth-google-oauth2', :git => 'https://github.com/zquestz/omniauth-google-oauth2.git'
+gem 'fullcalendar-rails'
 
 gem 'pg'
 

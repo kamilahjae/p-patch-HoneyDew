@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  root   "home#index"
+
   # activity routes
-  get    "activities",    to: "activities#index",    as: :activites
+  get    "activities",    to: "activities#index",    as: :activities
   get    "new/activity",  to: "activities#new",      as: :new_activity
   post   "activity",      to: "activities#create",   as: :create_activity
   get    "activity/:id",  to: "activities#show",     as: :show_activity
@@ -9,7 +11,9 @@ Rails.application.routes.draw do
   patch  "activity/:id",  to: "activities#update",   as: :update_activity
   delete "activity/:id",  to: "activities#delete",   as: :delete_activity
 
-  root   "home#index"
+  get "/auth/:provider/callback", to: "sessions#create", as: :login
+
+  get "/blah", to: "home#test"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -5,4 +5,7 @@ class HomeController < ApplicationController
     @forecast = HTTParty.get("http://api.openweathermap.org/data/2.5/forecast/daily?q=London&mode=xml&units=imperial&cnt=6").parsed_response["weatherdata"]["forecast"]["time"]
   end
 
+  def test
+  end
+
 end

@@ -1,1 +1,18 @@
-Hi
+<h1>Current Weather in <%= @weather["name"] %></h1>
+<h2><%= @weather["weather"][0]["main"] %>
+  <h2><%= @weather["main"]["temp"].to_i %> degrees Farenheit</h2>
+  <p>Today's high is: <%= @weather["main"]["temp_min"].to_i %> and today's low is: <%= @weather["main"]["temp_max"].to_i %></p>
+  <p>Wind: <%= convert_wind_to_mph(@weather["wind"]["speed"].to_i) %> MPH</p>
+  <p>Humidity: <%= @weather["main"]["humidity"] %>%</p>
+
+  <h1>Five-Day Forecast</h1>
+
+  <% @forecast[1..6].each do |day| %> <!-- @forecast[0] is today -->
+  <p><%= Date.parse(day["day"]).strftime("%B %d, %Y") %></p>
+  <p><%= day["symbol"]["name"].capitalize %></p>
+  <p>Low: <%= day["temperature"]["min"].to_i %> F</p>
+  <p>High: <%= day["temperature"]["max"].to_i %> F</p>
+  <p>Wind: <%= convert_wind_to_mph(day["windSpeed"]["mps"]) %> MPH</p>
+  <p>Humidity: <%= day["humidity"]["value"] %>%</p>
+  --------------------------
+  <% end %>

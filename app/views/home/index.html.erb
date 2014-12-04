@@ -10,5 +10,7 @@
 
 
 <p>Expect <%= @forecast[1]["symbol"]["name"] %></p> <!-- @forecast[0] is today -->
-<p>Low: <%= @forecast[1]["symbol"]["temperature"]["min"] %> F</p>
-<p>High: <%= @forecast[1]["symbol"]["temperature"]["max"] %> F</p>
+<p>Low: <%= @forecast[1]["temperature"]["min"] %> F</p>
+<p>High: <%= @forecast[1]["temperature"]["max"] %> F</p>
+<p>Wind: <%= convert_wind_to_mph(@forecast[1]["windSpeed"]["mps"]) %> mph</p>
+<p>Humidity: <%= @forecast[1]["humidity"]["value"] %>%</p>

@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  root "home#index"
+
+  # activity routes
+  get    "activities",    to: "activities#index",    as: :activites
+  get    "new/activity",  to: "activities#new",      as: :new_activity
+  post   "activity",      to: "activities#create",   as: :create_activity
+  get    "activity/:id",  to: "activities#show",     as: :show_activity
+  get    "activity/:id",  to: "activities#edit",     as: :edit_activity
+  patch  "activity/:id",  to: "activities#update",   as: :update_activity
+  delete "activity/:id",  to: "activities#delete",   as: :delete_activity
+
+  root   "home#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

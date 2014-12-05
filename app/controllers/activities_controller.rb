@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    #render activity form partial here
   end
 
   def create

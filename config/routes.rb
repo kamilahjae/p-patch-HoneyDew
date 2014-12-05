@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get    "activities",    to: "activities#index",    as: :activities
   get    "activity/new",  to: "activities#new",      as: :new_activity
   post   "activity",      to: "activities#create",   as: :create_activity
-  get    "activity/:id",  to: "activities#show",     as: :show_activity
+  # get    "activity/:id",  to: "activities#show",     as: :show_activity
+  get    "activity/:id.json", to: "activities#show", as: :show_activity
   get    "activity/:id",  to: "activities#edit",     as: :edit_activity
   patch  "activity/:id",  to: "activities#update",   as: :update_activity
   delete "activity/:id",  to: "activities#delete",   as: :delete_activity

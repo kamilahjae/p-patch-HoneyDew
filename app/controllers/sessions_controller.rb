@@ -5,8 +5,10 @@ class SessionsController < ApplicationController
     login = User.where(uid: auth_hash[:uid], provider: auth_hash[:provider])
     if login.empty?
       @current_user = User.create(uid: auth_hash[:uid], provider: auth_hash[:provider], pic: auth_hash[:info][:image], name: auth_hash[:info][:nickname])
+      session[:id] = @current_user.id
       redirect_to moar_login_path(@current_user.id)
     else
+      session[:id] = login.first.id
       redirect_to root_path
     end
 

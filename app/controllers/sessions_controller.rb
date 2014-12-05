@@ -4,4 +4,6 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
   end
 
+
+
 end

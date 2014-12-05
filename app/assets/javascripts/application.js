@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/gcal
+$(document).ready(function(){
+  $('#calendar').fullCalendar({
+    events: '/activities.json'
+  });
+});

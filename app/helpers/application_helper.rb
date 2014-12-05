@@ -12,4 +12,9 @@ module ApplicationHelper
     User.find(session[:id])
   end
 
+
+  def convert_datetime(datetime)
+
+  end
+
 end

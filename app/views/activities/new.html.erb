@@ -2,17 +2,11 @@
 
 <!--  possibly have newly created event moderated by admin? they can approve or deny? -->
 
-<%= bootstrap_form_for @activity, :url => { :action => create_activity_path } do |f| %>
-<%= f.label                :author %>
+<%= bootstrap_form_for @activity, :url => create_activity_path do |f| %>
 <%= f.text_field           :author %>
-<%= f.label                :name %>
 <%= f.text_field           :name %>
-<%= f.label                :start_date %>
 <%= f.datetime_local_field :start_date %>
-<%= f.label                :end_date %>
 <%= f.datetime_local_field :end_date %>
-<%= f.label                :location %>
 <%= f.text_field           :location %>
-
 <%= f.submit %>
 <% end %>

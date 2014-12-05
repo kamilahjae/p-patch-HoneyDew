@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post "/:id/new", to: "users#new"
   patch "/:id/new", to: "users#new"
 
+  get "/signout", to: "sessions#logout", as: :logout
+
   get "/blah", to: "home#test"
 
 

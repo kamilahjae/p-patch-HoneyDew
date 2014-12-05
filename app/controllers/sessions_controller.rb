@@ -11,8 +11,13 @@ class SessionsController < ApplicationController
       session[:id] = login.first.id
       redirect_to root_path
     end
-
   end
+
+  def logout
+    session[:id] = nil
+    redirect_to root_path
+  end
+
 
   # auth_hash = request.env["omniauth.auth"]
   # login = Authentication.where(uid: auth_hash[:uid], provider: auth_hash[:provider])

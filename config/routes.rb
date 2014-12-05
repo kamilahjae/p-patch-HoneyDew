@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback", to: "sessions#create", as: :login
 
+  get "/:id/new", to: "users#more_info", as: :moar_login
+  post "/:id/new", to: "users#new"
+  patch "/:id/new", to: "users#new"
+
   get "/blah", to: "home#test"
 
 

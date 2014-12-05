@@ -4,9 +4,12 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     login = User.where(uid: auth_hash[:uid], provider: auth_hash[:provider])
     if login.empty?
-      User.create(uid: auth_hash[:uid], provider: auth_hash[:provider], pic: auth_hash[:info][:image], name: auth_hash[:info][:nickname])      
+      @current_user = User.create(uid: auth_hash[:uid], provider: auth_hash[:provider], pic: auth_hash[:info][:image], name: auth_hash[:info][:nickname])
+      redirect_to moar_login_path(@current_user.id)
+    else
+      redirect_to root_path
     end
-    redirect_to root_path
+
   end
 
   # auth_hash = request.env["omniauth.auth"]

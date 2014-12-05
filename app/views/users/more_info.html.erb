@@ -1,0 +1,9 @@
+<h1>Thanks for signing up with HoneyDew!</h1>
+<h3>We just need a little more information to complete your registration. Fields marked with an asterisk (*) are required.</h3>
+
+<%= image_tag @user.pic %>
+<%= form_for @user, url: moar_login_path(@user.id) do |f| %>
+<%= f.text_field :name %>*
+<%= f.text_field :email %>*
+<%= f.submit %>
+<% end %>

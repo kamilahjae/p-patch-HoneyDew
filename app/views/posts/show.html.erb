@@ -2,7 +2,7 @@
 
 <h2>By <%= @post.author %></h2>
 
-<%= image_tag @post.pic %>
+<%= image_tag(@post.pic, :class => "post_image") %>
 
 <%= @post.content.html_safe %>
 

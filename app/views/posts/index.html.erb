@@ -1,10 +1,15 @@
 <h1>HoneyDew Blog</h1>
 
-<% @posts.each do |post| %>
-  <h2><%= post.name %></h2>
-  <h3><%= post.author %></h3>
-  <p><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %></p>
-  <p><%= image_tag post.pic %></p>
-  <%= post.content.html_safe %>
-  <hr class="style-eight">
+<% if @posts %>
+  <% @posts.each do |post| %>
+    <h2><%= link_to(post.name, post_path(post.id)) %></h2>
+    <h3><%= post.author %></h3>
+    <h5><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %></h5>
+    <%= image_tag(post.pic, :class => "post_image") %>
+    <%= post.content.html_safe %>
+    <% if current_user.admin %>
+    <%= button_to "Edit", edit_post_path(post.id), :method => "get" %>
+    <% end %>
+    <hr class="style-eight">
+  <% end %>
 <% end %>

@@ -1,0 +1,11 @@
+<%= form_for @post, url: create_post_path do |f| %>
+  <p>Title</p>
+  <%= f.text_field :name %>
+  <p>Author</p>
+  <%= f.text_field :author %>
+  <p>Pic (URL only)</p>
+  <%= f.text_field :pic %>
+  <p>Content</p>
+  <%= f.text_field :content, size: "200x300" %>
+  <%= f.submit :Submit %>
+<% end %>

@@ -1,6 +1,7 @@
 <h1><%= @post.name %></h1>
 
-<h2>By <%= @post.author %></h2>
+<h3>By <%= @post.author %></h3>
+<h5><%= Date.parse(@post.created_at.to_s).strftime("%B %d, %Y") %></h5>
 
 <%= image_tag(@post.pic, :class => "post_image") %>
 

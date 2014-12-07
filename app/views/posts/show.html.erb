@@ -4,4 +4,8 @@
 
 <%= image_tag @post.pic %>
 
-<%= @post.content %>
+<%= @post.content.html_safe %>
+
+<% if current_user.admin %>
+  <%= button_to "Edit", edit_post_path, :method => "get" %>
+<% end %>

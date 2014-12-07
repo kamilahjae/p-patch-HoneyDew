@@ -2,9 +2,13 @@ Rails.application.routes.draw do
 
   root   "home#index"
 
-  get "/post/new", to: "posts#new", as: :new_post
-  post "post/create", to: "posts#create", as: :create_post
-  get "/post/:id", to: "posts#show", as: :post
+  get    "/posts"          , to: "posts#index",   as: :posts
+  post   "/posts"          , to: "posts#create"
+  get    "/posts/new"      , to: "posts#new",     as: :new_post
+  get    "/posts/:id"      , to: "posts#show",    as: :post
+  patch  "/posts/:id"      , to: "posts#update"
+  delete "/posts/:id"      , to: "posts#destroy"
+  get    "/posts/:id/edit" , to: "posts#edit",    as: :edit_post
 
   # activity routes
   get    "activities",        to: "activities#index",   as: :activities

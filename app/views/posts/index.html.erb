@@ -1,0 +1,10 @@
+<h1>HoneyDew Blog</h1>
+
+<% @posts.each do |post| %>
+  <h2><%= post.name %></h2>
+  <h3><%= post.author %></h3>
+  <p><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %></p>
+  <p><%= image_tag post.pic %></p>
+  <%= post.content.html_safe %>
+  <hr class="style-eight">
+<% end %>

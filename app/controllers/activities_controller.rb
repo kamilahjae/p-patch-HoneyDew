@@ -4,6 +4,8 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    # possibly have newly created event moderated by admin? they can approve/deny? 
+
     @activity = Activity.new
   end
 
@@ -19,7 +21,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-
+    @activity = Activity.find(params[:id])
   end
 
   def update

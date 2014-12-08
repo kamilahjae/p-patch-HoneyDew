@@ -1,0 +1,15 @@
+<div class="row post_form">
+  <div class="col-md-5">
+    <%= form_for @post do |f| %>
+      <p>Title</p>
+      <%= f.text_field :name %>
+      <p>Author</p>
+      <%= f.text_field :author %>
+      <p>Pic (URL only)</p>
+      <%= f.text_field :pic %>
+      <p>Content (Use HTML for formatting)</p>
+      <%= f.text_area :content, :class => "input-xxlarge", size: "500x30" %><br>
+      <%= f.submit :Submit %>
+    <% end %>
+  </div>
+</div>

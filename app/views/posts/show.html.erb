@@ -1,0 +1,12 @@
+<h1><%= @post.name %></h1>
+
+<h3>By <%= @post.author %></h3>
+<h5><%= Date.parse(@post.created_at.to_s).strftime("%B %d, %Y") %></h5>
+
+<%= image_tag(@post.pic, :class => "post_image") %>
+
+<%= @post.content.html_safe %>
+
+<% if current_user.admin %>
+  <%= button_to "Edit", edit_post_path, :method => "get" %>
+<% end %>

@@ -19,16 +19,15 @@ Rails.application.routes.draw do
   patch  "activity/:id",      to: "activities#update",  as: :update_activity
   delete "activity/:id",      to: "activities#delete",  as: :delete_activity
 
+  get "/auth/:provider/callback", to: "sessions#create", as: :login
+
   # get    "/users"          , to: "users#index",   as: :users
   # post   "/users"          , to: "users#create"
   # get    "/users/new"      , to: "users#new",     as: :new_user
-  # get    "/users/:id"      , to: "users#show",    as: :user
-  # patch  "/users/:id"      , to: "users#update"
-  # delete "/users/:id"      , to: "users#destroy"
-  # get    "/users/:id/edit" , to: "users#edit",    as: :edit_user
-
-  get "/auth/:provider/callback", to: "sessions#create", as: :login
-
+  get    "/users/:id"      , to: "users#show",    as: :user
+  patch  "/users/:id"      , to: "users#update"
+  delete "/users/:id"      , to: "users#destroy"
+  get    "/users/:id/edit" , to: "users#edit",    as: :edit_user
   get "/new/:id", to: "users#more_info", as: :moar_login
   post "/new/:id", to: "users#update"
   patch "/new/:id", to: "users#update"

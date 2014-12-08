@@ -10,4 +10,12 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @user = User.find(session[:id])
+  end
+
+  def show
+    @user = User.find(session[:id])
+  end
+
 end

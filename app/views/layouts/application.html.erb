@@ -12,7 +12,7 @@
   <% if logged_in? %>
       <div class="logged_in">
         <p><%= current_user.name %></p>
-        <p><%= image_tag current_user.pic, :class => "prof_pic" %></p>
+        <p><%= link_to image_tag(current_user.pic), user_path(current_user.id), :class => "prof_pic" %></p>
       </div>
     <%= button_to "Log Out", logout_path, :method => "get" %>
     <%= button_to "Home", root_path, :method => "get" %>

@@ -8,6 +8,7 @@
     <%= post.content.slice(0..480).html_safe + "..." %><%= link_to "Read more", post_path(post.id) %>
     <% if current_user.admin %>
     <%= button_to "Edit", edit_post_path(post.id), :method => "get" %>
+    <%= button_to "Delete", post_path(post.id), :method => "delete", data: {confirm: "Are you sure you want to delete this post?"} %>
     <% end %>
     <hr class="style-eight">
   <% end %>

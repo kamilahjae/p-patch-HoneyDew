@@ -9,4 +9,5 @@
 
 <% if current_user.admin %>
   <%= button_to "Edit", edit_post_path, :method => "get" %>
+  <%= button_to "Delete", post_path(@post.id), :method => "delete", :class => "btn-danger", data: {confirm: "Are you sure you want to delete this post?"} %>
 <% end %>

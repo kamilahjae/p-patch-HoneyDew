@@ -11,5 +11,6 @@
       <%= f.text_area :content, :class => "input-xxlarge", size: "500x30" %><br>
       <%= f.submit :Submit %>
     <% end %>
+    <%= button_to "Cancel", posts_path, :class => "btn-danger", :method => "get" %>
   </div>
 </div>

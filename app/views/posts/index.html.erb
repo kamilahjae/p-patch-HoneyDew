@@ -1,0 +1,14 @@
+<h1>HoneyDew Blog</h1>
+
+<% if @posts %>
+  <% @posts.each do |post| %>
+    <h2><%= link_to(post.name, post_path(post.id)) %></h2>
+    <h3><%= post.author %></h3>
+    <h5><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %></h5>
+    <%= post.content.slice(0..480).html_safe + "..." %><%= link_to "Read more", post_path(post.id) %>
+    <% if current_user.admin %>
+    <%= button_to "Edit", edit_post_path(post.id), :method => "get" %>
+    <% end %>
+    <hr class="style-eight">
+  <% end %>
+<% end %>

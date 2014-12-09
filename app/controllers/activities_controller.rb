@@ -4,6 +4,8 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    # possibly have newly created event moderated by admin? they can approve/deny?
+
     @activity = Activity.new
   end
 
@@ -19,15 +21,27 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-
+    @activity = Activity.find(params[:id])
   end
 
   def update
+    @activity = Activity.find(params[:id])
 
+    if @activity.update(activity_params)
+      redirect_to show_activity_path
+    else
+      render edit_activity_path
+    end
   end
 
   def destroy
+    @activity = Activity.find(params[:id])
 
+    if @activity.destroy(activity_params)
+      redirect_to activities_path
+    else
+      render show_activity_path
+    end 
   end
 
   def activity_params
@@ -40,4 +54,8 @@ class ActivitiesController < ApplicationController
     :author,
     )
   end
+
+  # def self.find_activity
+  #   @activity = Activity.find(activity_params)
+  # end
 end

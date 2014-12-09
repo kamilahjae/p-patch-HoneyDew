@@ -34,6 +34,15 @@ Rails.application.routes.draw do
   post "/new/:id", to: "users#update"
   patch "/new/:id", to: "users#update"
 
+  #tool routes
+  get    "/tools"          , to: "tools#index",   as: :tools
+  post   "/tools"          , to: "tools#create"
+  get    "/tools/new"      , to: "tools#new",     as: :new_tool
+  get    "/tools/:id"      , to: "tools#show",    as: :tool
+  patch  "/tools/:id"      , to: "tools#update"
+  delete "/tools/:id"      , to: "tools#destroy"
+  get    "/tools/:id/edit" , to: "tools#edit",    as: :edit_tool
+
   # session route
   get "/signout", to: "sessions#logout", as: :logout
 

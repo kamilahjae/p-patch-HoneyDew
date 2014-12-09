@@ -8,3 +8,4 @@
   <p><%= f.text_field :email %></p>
   <p><%= f.submit :Submit %></p>
   <% end %>
+  <p><%= button_to "Cancel", user_path(@user.id), :class => "btn-danger", :method => "get" %>

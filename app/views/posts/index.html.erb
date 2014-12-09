@@ -4,7 +4,8 @@
   <% @posts.each do |post| %>
     <h2><%= link_to(post.name, post_path(post.id)) %></h2>
     <h3><%= post.author %></h3>
-    <h5><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %></h5>
+    <!-- display date and disqus comment count -->
+    <h5><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %> | <a href="/posts/<%= post.id %>#disqus_thread"><%= post.name %></a></h5>
     <%= post.content.slice(0..480).html_safe + "..." %><%= link_to "Read more", post_path(post.id) %>
     <% if current_user.admin %>
     <%= button_to "Edit", edit_post_path(post.id), :method => "get" %>
@@ -13,3 +14,17 @@
     <hr class="style-eight">
   <% end %>
 <% end %>
+
+<!-- disqus code for comment count: -->
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'honey-dew'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.type = 'text/javascript';
+  s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>

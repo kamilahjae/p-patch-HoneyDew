@@ -1,6 +1,8 @@
+<h1>Update Your Activity</h1>
+
 <%= render "shared/error_messages", object: @activity %>
 
-<%= bootstrap_form_for @activity, :url => create_activity_path do |f| %>
+<%= bootstrap_form_for @activity, :url => update_activity_path do |f| %>
 <%= render :partial => "shared/activity_form", :locals => { :f => f } %>
 <%= f.submit "Add Event" %>
 <% end %>

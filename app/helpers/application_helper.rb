@@ -9,7 +9,10 @@ module ApplicationHelper
   end
 
   def current_user
-    User.find(session[:id])
+    if session[:id]
+      a = User.find(session[:id])
+    end
+    return a
   end
 
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-
   root   "home#index"
 
+  # post routes
   get    "/posts"          , to: "posts#index",   as: :posts
   post   "/posts"          , to: "posts#create"
   get    "/posts/new"      , to: "posts#new",     as: :new_post
@@ -11,22 +11,26 @@ Rails.application.routes.draw do
   get    "/posts/:id/edit" , to: "posts#edit",    as: :edit_post
 
   # activity routes
-  get    "activities",        to: "activities#index",   as: :activities
-  get    "activity/new",      to: "activities#new",     as: :new_activity
-  post   "activity",          to: "activities#create",  as: :create_activity
-  get    "activity/:id.json", to: "activities#show",    as: :show_activity
-  get    "activity/:id",      to: "activities#edit",    as: :edit_activity
-  patch  "activity/:id",      to: "activities#update",  as: :update_activity
-  delete "activity/:id",      to: "activities#delete",  as: :delete_activity
+  get    "activities",          to: "activities#index",   as: :activities
+  get    "activity/new",        to: "activities#new",     as: :new_activity
+  post   "activity",            to: "activities#create",  as: :create_activity
+  get    "activity/:id",        to: "activities#show",    as: :show_activity
+  get    "activity/:id/edit",   to: "activities#edit",    as: :edit_activity
+  patch  "activity/:id/update", to: "activities#update",  as: :update_activity
+  delete "activity/:id/delete", to: "activities#delete",  as: :delete_activity
 
-  get "/auth/:provider/callback", to: "sessions#create", as: :login
+  # oauth route
+  get    "/auth/:provider/callback", to: "sessions#create", as: :login
 
-  get "/:id/new", to: "users#more_info", as: :moar_login
-  post "/:id/new", to: "users#new"
-  patch "/:id/new", to: "users#new"
+  # user routes
+  get    "/:id/new", to: "users#more_info", as: :moar_login
+  post   "/:id/new", to: "users#new"
+  patch  "/:id/new", to: "users#new"
 
+  # sessions routes
   get "/signout", to: "sessions#logout", as: :logout
 
+  # test routes
   get "/blah", to: "home#test"
 
 

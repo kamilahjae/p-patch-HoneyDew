@@ -20,7 +20,9 @@
 
 <p><%= link_to "View our Community Calendar", "/activities" %></p>
 <p><%= link_to "View our Blog", posts_path %></p>
-<p><%= link_to "View My Account", user_path(current_user.id) %></p>
+<% if current_user %>
+  <p><%= link_to "View My Account", user_path(current_user.id) %></p>
+<% end %>
 
 <% if current_user && current_user.admin == true %>
   <p><%= link_to "Create New Post", new_post_path %></p>

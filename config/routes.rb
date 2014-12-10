@@ -42,7 +42,8 @@ Rails.application.routes.draw do
   patch  "/tools/:id"      , to: "tools#update"
   delete "/tools/:id"      , to: "tools#destroy"
   get    "/tools/:id/edit" , to: "tools#edit",      as: :edit_tool
-  post   "toolshed/:user_id/:tool_id", to: "tool_sheds#new", as: :tool_shed
+  post   "toolshed", to: "tool_sheds#new", as: :tool_shed
+
 
   # tool shed routes
   post   "toolshed/new"    , to: "tool_sheds#new",    as: :new_toolshed

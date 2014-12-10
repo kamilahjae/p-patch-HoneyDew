@@ -8,5 +8,6 @@ class ToolShedsController < ApplicationController
       redirect_to tools_path, notice: "You have successfully reserved a tool."
     end
   end
-  
+
+
 end

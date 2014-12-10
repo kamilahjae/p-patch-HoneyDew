@@ -27,7 +27,7 @@
       <p><%= tool.available %> remaining</p>
     </div>
     <div class="col-md-3">
-      <%= button_to "Check Out", root_path %>
+      <%= button_to "Check Out", tool_shed_path(session[:id], tool.id) %>
     </div>
   </div>
 <% end %>

@@ -26,28 +26,31 @@ Rails.application.routes.draw do
   # get    "/users"          , to: "users#index",   as: :users
   # post   "/users"          , to: "users#create"
   # get    "/users/new"      , to: "users#new",     as: :new_user
-  get    "/users/:id"      , to: "users#show",    as: :user
+  get    "/users/:id"      , to: "users#show",      as: :user
   patch  "/users/:id"      , to: "users#update"
   delete "/users/:id"      , to: "users#destroy"
-  get    "/users/:id/edit" , to: "users#edit",    as: :edit_user
-  get "/new/:id", to: "users#more_info", as: :moar_login
-  post "/new/:id", to: "users#update"
-  patch "/new/:id", to: "users#update"
+  get    "/users/:id/edit" , to: "users#edit",      as: :edit_user
+  get    "/new/:id",         to: "users#more_info", as: :moar_login
+  post   "/new/:id",         to: "users#update"
+  patch  "/new/:id",         to: "users#update"
 
   #tool routes
-  get    "/tools"          , to: "tools#index",   as: :tools
+  get    "/tools"          , to: "tools#index",     as: :tools
   post   "/tools"          , to: "tools#create"
-  get    "/tools/new"      , to: "tools#new",     as: :new_tool
-  get    "/tools/:id"      , to: "tools#show",    as: :tool
+  get    "/tools/new"      , to: "tools#new",       as: :new_tool
+  get    "/tools/:id"      , to: "tools#show",      as: :tool
   patch  "/tools/:id"      , to: "tools#update"
   delete "/tools/:id"      , to: "tools#destroy"
-  get    "/tools/:id/edit" , to: "tools#edit",    as: :edit_tool
+  get    "/tools/:id/edit" , to: "tools#edit",      as: :edit_tool
+  post   "toolshed/:user_id/:tool_id", to: "tool_sheds#new", as: :tool_shed
+
+  # tool shed routes
+  post   "toolshed/new"    , to: "tool_sheds#new",    as: :new_toolshed
+  post   "toolshed/create" , to: "tool_sheds#create", as: :create_toolshed
 
   # session route
-  get "/signout", to: "sessions#logout", as: :logout
+  get    "/signout", to: "sessions#logout", as: :logout
 
-  # test route
-  get "/blah", to: "home#test"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

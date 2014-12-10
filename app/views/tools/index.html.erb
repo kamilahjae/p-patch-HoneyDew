@@ -12,22 +12,38 @@
       <h2>Status</h2>
     </div>
 
-    <div class="col-md-3"></div>
+    <div class="col-md-3"><h2>Reservations</h2></div>
   </div>
 <% @tools.each do |tool| %>
   <div class="row">
     <div class="col-md-3">
-      <%= tool.item %>
+      <%= tool.item.capitalize %>
     </div>
     <div class="col-md-3">
       <%= image_tag(tool.pic, :class => "tool_pic") %><%= tool.description %>
     </div>
     <div class="col-md-3">
-      <p>Checked out by: Kamilah</p>
+      <% @toolshed = ToolShed.where(tool_id: tool.id) %>
+      <% @users = [] %>
+      <% @toolshed.each do |row| %>
+        <% @users.push(User.find(row.user_id)) %>
+      <% end %>
+      <p>Checked out by:
+        <% @users.each do |user| %>
+          <%= user.name %>
+        <% end %>
+      </p>
       <p><%= tool.available %> remaining</p>
     </div>
     <div class="col-md-3">
-      <%= button_to "Check Out", tool_shed_path(session[:id], tool.id) %>
+      <% if ToolShed.where(tool_id: tool.id, user_id: session[:id]).exists? %>
+        <p>You've already checked this out</p>
+        <%= button_to "Return", tool_path(tool.id), params: {'tool[return]' => true, 'tool[user_id]' => session[:id], 'tool[tool_id]' => tool.id }, :method => "patch" %>
+      <% elsif tool.available >= 1 %>
+        <%= button_to "Reserve", tool_path(tool.id), params: {'tool[reserve]' => true, 'tool[user_id]' => session[:id], 'tool[tool_id]' => tool.id }, :method => "patch" %>
+      <% else %>
+        <p>No more <%= tool.item %>s available to reserve!</p>
+      <% end %>
     </div>
   </div>
 <% end %>

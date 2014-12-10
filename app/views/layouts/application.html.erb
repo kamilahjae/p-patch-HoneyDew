@@ -4,17 +4,18 @@
   <title>HoneyDew</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= link_to "Home", root_path %>
-  
+
   <div class="container-fluid">
   <% if logged_in? %>
       <div class="logged_in">
         <p><%= current_user.name %></p>
-        <p><%= link_to image_tag(current_user.pic), user_path(current_user.id), :class => "prof_pic" %></p>
+        <p><%= link_to image_tag(current_user.pic, :class => "prof_pic"), user_path(current_user.id) %></p>
       </div>
     <%= button_to "Log Out", logout_path, :method => "get" %>
     <%= button_to "Home", root_path, :method => "get" %>

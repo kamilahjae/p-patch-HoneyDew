@@ -1,0 +1,34 @@
+<!-- <div class="container"> -->
+  <div class="row">
+    <div class="col-md-3">
+      <h2>Name</h2>
+    </div>
+
+    <div class="col-md-3">
+      <h2>Description</h2>
+    </div>
+
+    <div class="col-md-3">
+      <h2>Status</h2>
+    </div>
+
+    <div class="col-md-3"></div>
+  </div>
+<% @tools.each do |tool| %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= tool.item %>
+    </div>
+    <div class="col-md-3">
+      <%= image_tag(tool.pic, :class => "tool_pic") %><%= tool.description %>
+    </div>
+    <div class="col-md-3">
+      <p>Checked out by: Kamilah</p>
+      <p><%= tool.available %> remaining</p>
+    </div>
+    <div class="col-md-3">
+      <%= button_to "Check Out", tool_shed_path(session[:id], tool.id) %>
+    </div>
+  </div>
+<% end %>
+<!-- </div> -->

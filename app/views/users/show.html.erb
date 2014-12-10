@@ -7,10 +7,14 @@
 <%= button_to "Edit My Info", edit_user_path(@user.id), :method => "get" %>
 
 <h3>Tools I've Checked Out</h3>
-<% @tools.each do |tool| %>
-  <p><%= tool.item %></p>
-  <%= image_tag(tool.pic, :class => "tool_pic") %>
-<% end  %>
+<% if @tools.empty? %>
+  <p>No tools currently checked out.</p>
+<% else %>
+  <% @tools.each do |tool| %>
+    <p><%= tool.item %></p>
+    <%= image_tag(tool.pic, :class => "tool_pic") %>
+  <% end  %>  
+<% end %>
 
 
 <h3>info about events I've created</h3>

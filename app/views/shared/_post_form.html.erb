@@ -8,9 +8,9 @@
       <p>Pic (URL only)</p>
       <%= f.text_field :pic %>
       <p>Content (Use HTML for formatting)</p>
-      <%= f.text_area :content, :class => "input-xxlarge", size: "500x30" %><br>
+      <%= f.text_area :content, size: "90x30" %><br>
       <%= f.submit :Submit %>
     <% end %>
-    <%#= button_to "Cancel", post_path(@post.id), :class => "btn-danger", :method => "get" %>
+    <%= button_to "Cancel", posts_path, :class => "btn-warning", :method => "get" %>
   </div>
 </div>

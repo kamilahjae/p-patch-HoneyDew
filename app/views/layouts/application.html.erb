@@ -9,16 +9,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to "Home", root_path %>
 
   <div class="container-fluid">
+
   <% if logged_in? %>
       <div class="logged_in">
         <p><%= current_user.name %></p>
         <p><%= link_to image_tag(current_user.pic, :class => "prof_pic"), user_path(current_user.id) %></p>
       </div>
-    <%= button_to "Log Out", logout_path, :method => "get" %>
-    <%= button_to "Home", root_path, :method => "get" %>
+      <%= button_to "Log Out", logout_path, :method => "get" %>
+      <%= button_to "Home", root_path, :method => "get" %>
+      <p><%= link_to "View our Community Calendar", "/activities" %></p>
+      <p><%= link_to "View our Blog", posts_path %></p>
+      <% if current_user && current_user.admin == true %>
+        <p><%= link_to "Create New Post", new_post_path %></p>
+      <% end %>
+      <p><%= link_to "View My Account", user_path(current_user.id) %></p>
+
   <% else %>
     <p>
       Log in with Twitter: <%= link_to image_tag("twitter.png", :class => "login"), "/auth/twitter" %>

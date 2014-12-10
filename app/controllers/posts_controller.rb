@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = User.find(session[:id])
   end
 
   def edit

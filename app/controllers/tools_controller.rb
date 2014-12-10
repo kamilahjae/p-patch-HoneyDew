@@ -10,7 +10,13 @@ class ToolsController < ApplicationController
       @tool.available -= 1
       @tool.save
     end
-    redirect_to tools_path
+    @toolshed = ToolShed.new(
+    user_id: params[:tool][:user_id],
+    tool_id: params[:tool][:tool_id]
+    )
+    if @toolshed.save
+      redirect_to tools_path, notice: "You have successfully reserved a tool."
+    end
   end
 
 end

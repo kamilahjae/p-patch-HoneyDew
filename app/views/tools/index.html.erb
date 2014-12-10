@@ -17,13 +17,22 @@
 <% @tools.each do |tool| %>
   <div class="row">
     <div class="col-md-3">
-      <%= tool.item %>
+      <%= tool.item.capitalize %>
     </div>
     <div class="col-md-3">
       <%= image_tag(tool.pic, :class => "tool_pic") %><%= tool.description %>
     </div>
     <div class="col-md-3">
-      <p>Checked out by: Kamilah</p>
+      <% @toolshed = ToolShed.where(tool_id: tool.id) %>
+      <% @users = [] %>
+      <% @toolshed.each do |row| %>
+        <% @users.push(User.find(row.user_id)) %>
+      <% end %>
+      <p>Checked out by:
+        <% @users.each do |user| %>
+          <%= user.name %>
+        <% end %>
+      </p>
       <p><%= tool.available %> remaining</p>
     </div>
     <div class="col-md-3">

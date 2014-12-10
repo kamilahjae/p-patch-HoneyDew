@@ -16,6 +16,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:id])
+    @toolshed = ToolShed.where(user_id: session[:id])
+    @tools = []
+    @toolshed.each do |row|
+      @tools.push(Tool.find(row.tool_id))
+    end
   end
+
+  # a[0].tool_id
 
 end

@@ -1,4 +1,7 @@
 <h1>Thanks for signing up with HoneyDew!</h1>
 <h3>We just need a little more information to complete your registration. Fields marked with an asterisk (*) are required.</h3>
 
-<%= render "shared/user_form" %>
+<%= form_for @user, :url => moar_login_path(@user.id) do |f| %>
+<%= render :partial => "shared/user_form", :locals => { :f => f } %>
+
+<% end %>

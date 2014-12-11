@@ -1,21 +1,39 @@
 class UsersController < ApplicationController
 
-  def more_info
-    @user = User.find(params[:id])
+  def new
+    @user = User.new
   end
 
-  def update
-    @user = User.find(params[:id])
-    @user.update(params.require(:user).permit(:email, :name, :pic))
-    redirect_to root_path
-  end
+  def create
+    @user = User.new(user_params)
 
-  def edit
-    @user = User.find(session[:id])
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      render "new"
+    end
   end
 
   def show
     @user = User.find(session[:id])
   end
 
+  def edit
+    @user = User.find(session[:id])
+  end
+
+  def update
+    @user = User.find(session[:id])
+    @user.update(user_params)
+    redirect_to root_path
+  end
+
+  def more_info
+    @user = User.find(session[:id])
+    # find by session id to prevent users from accessing other user's information in params
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :name, :pic, :password)
+  end
 end

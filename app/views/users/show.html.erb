@@ -10,10 +10,14 @@
 <% if @tools.empty? %>
   <p>No tools currently checked out.</p>
 <% else %>
-  <% @tools.each do |tool| %>
-    <p><%= tool.item %></p>
-    <%= image_tag(tool.pic, :class => "tool_pic") %>
-  <% end  %>  
+  <div class="account_tools_container">
+    <% @tools.each do |tool| %>
+      <div class="account_tool">
+        <p><%= tool.item %></p>
+        <%= image_tag(tool.pic, :class => "tool_pic") %>
+      </div>
+    <% end  %>
+  </div>
 <% end %>
 
 

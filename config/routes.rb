@@ -23,9 +23,9 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create", as: :login
 
   # user routes
-  # get    "/users"          , to: "users#index",   as: :users
-  # post   "/users"          , to: "users#create"
-  # get    "/users/new"      , to: "users#new",     as: :new_user
+  # get    "/users"          , to: "users#index",     as: :users
+  post   "/users"          , to: "users#create",    as: :users
+  get    "/users/new"      , to: "users#new",       as: :new_user
   get    "/users/:id"      , to: "users#show",      as: :user
   patch  "/users/:id"      , to: "users#update"
   delete "/users/:id"      , to: "users#destroy"

@@ -1,4 +1,4 @@
-<%= form_for @user, url: moar_login_path(@user.id) do |f| %>
+
   <p>Current pic: <%= image_tag @user.pic, :class => "prof_pic" %></p>
   <p>Picture* (URL)</p>
   <p><%= f.text_field :pic, size: "20x100" %></p>
@@ -6,6 +6,13 @@
   <p><%= f.text_field :name %></p>
   <p>Email*</p>
   <p><%= f.text_field :email %></p>
-  <p><%= f.submit :Submit %></p>
-  <% end %>
-  <p><%= button_to "Cancel", user_path(@user.id), :class => "btn-danger", :method => "get" %>
+  <p>Password*</p>
+  <p><%= f.password_field :password %></p>
+  <p>Password Confirmation*</p>
+  <p><%= f.password_field :password_confirmation %>
+
+  <div class="col-md-1"
+  <p><%= f.submit :Submit %>
+  </div>
+
+  

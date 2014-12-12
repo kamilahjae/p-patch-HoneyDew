@@ -10,12 +10,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(params.require(:post).permit(:name, :author, :content, :pic))
+    post_mailer = PostMailer.new_post(@post.id)
+    post_mailer.deliver
     redirect_to post_path(@post.id)
   end
 
   def show
     @post = Post.find(params[:id])
-    @user = User.find(session[:id])
   end
 
   def edit

@@ -13,7 +13,7 @@ class PostMailer < ActionMailer::Base
       @email_array.each do |email|
         email
       end,
-      subject: "A new HoneyDew blog post has been added!")
+      subject: "#{@post.name} has been added to the HoneyDew Blog!")
   end
 
 end

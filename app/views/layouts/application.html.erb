@@ -24,6 +24,7 @@
       <% if current_user && current_user.admin == true %>
         <p><%= link_to "Create New Post", new_post_path %></p>
       <% end %>
+      <p><%= link_to "View Toolshed", tools_path %></p>
       <p><%= link_to "View My Account", user_path(current_user.id) %></p>
 
   <% else %>

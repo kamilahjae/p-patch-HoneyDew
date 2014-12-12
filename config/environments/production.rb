@@ -28,6 +28,18 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'honey-dew.herokuapp.com' }
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.mandrillapp.com',
+    port:                 587,
+    domain:               'honey-dew.herokuapp.com',
+    user_name:            ENV["MAIL_USERNAME"], # your gmail login
+    password:             ENV["MAIL_PASSWORD"], # your gmail password
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 

@@ -6,24 +6,20 @@ class ToolsController < ApplicationController
 
   def update
     @tool = Tool.find(params[:id])
-    if @tool.available > 0 && params[:tool][:reserve]
+    if reserving_a_tool?(@tool)
       @tool.available -= 1
-      @tool.save
-      @toolshed = ToolShed.new(
-      user_id: params[:tool][:user_id],
-      tool_id: params[:tool][:tool_id]
-      )
-      if @toolshed.save
+      if add_toolshed.save && @tool.save
         redirect_to tools_path, notice: "You have successfully reserved a tool."
       end
     end
-    if params[:tool][:return]
+    if returning_a_tool?(@tool)
       @tool.available += 1
       @tool.save
-      a = ToolShed.where(user_id: params[:tool][:user_id], tool_id: params[:tool][:tool_id]).last.id
-      ToolShed.destroy(a)
-      redirect_to tools_path
+      if ToolShed.destroy(find_toolshed)
+        redirect_to tools_path, notice: "You have successfully returned a tool."
+      end
     end
   end
+
 
 end

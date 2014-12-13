@@ -19,13 +19,13 @@
       </div>
       <%= button_to "Log Out", logout_path, :method => "get" %>
       <%= button_to "Home", root_path, :method => "get" %>
-      <p><%= link_to "View our Community Calendar", "/activities" %></p>
-      <p><%= link_to "View our Blog", posts_path %></p>
+      <%= link_to "View our Community Calendar", "/activities" %> |
+      <%= link_to "View our Blog", posts_path %> |
       <% if current_user && current_user.admin == true %>
-        <p><%= link_to "Create New Post", new_post_path %></p>
+        <%= link_to "Create New Post", new_post_path %> |
       <% end %>
-      <p><%= link_to "View Toolshed", tools_path %></p>
-      <p><%= link_to "View My Account", user_path(current_user.id) %></p>
+      <%= link_to "View Toolshed", tools_path %> |
+      <%= link_to "View My Account", user_path(current_user.id) %> |
 
   <% else %>
     <p>

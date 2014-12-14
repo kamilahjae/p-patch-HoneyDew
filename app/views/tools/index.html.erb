@@ -23,21 +23,12 @@
       <%= image_tag(tool.pic, :class => "tool_pic") %><%= tool.description %>
     </div>
     <div class="col-md-3">
-      <% @toolshed = ToolShed.where(tool_id: tool.id) %>
-      <% @users = [] %>
-      <% @toolshed.each do |row| %>
-        <% @users.push(User.find(row.user_id)) %>
-      <% end %>
-
       <p>Checked out by:
-        <% @users.each do |user| %>
-          <% if @users.count == 1 %>
-            <%= user.name %>
-          <% else %>
+
+        <% find_all_tool_users(tool).each do |user| %>
             <ul>
               <li><%= user.name %></li>
             </ul>
-          <% end %>
         <% end %>
       </p>
 

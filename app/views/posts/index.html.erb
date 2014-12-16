@@ -9,6 +9,7 @@
     <% @posts.each do |post| %>
       <h2><%= link_to(post.name, post_path(post.id)) %>
       <small>By: <%= post.author %></small></h2>
+
       <!-- display date and disqus comment count -->
       <h5><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %> | <a href="/posts/<%= post.id %>#disqus_thread">Comments</a></h5>
       <br />

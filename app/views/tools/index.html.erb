@@ -15,7 +15,7 @@
     <div class="col-md-3"><h2>Reservations</h2></div>
   </div>
 <% @tools.each do |tool| %>
-  <div class="row">
+  <div class="row tool_row">
     <div class="col-md-3">
       <%= tool.item.capitalize %>
     </div>
@@ -23,16 +23,15 @@
       <%= image_tag(tool.pic, :class => "tool_pic") %><%= tool.description %>
     </div>
     <div class="col-md-3">
-      <% @toolshed = ToolShed.where(tool_id: tool.id) %>
-      <% @users = [] %>
-      <% @toolshed.each do |row| %>
-        <% @users.push(User.find(row.user_id)) %>
-      <% end %>
       <p>Checked out by:
-        <% @users.each do |user| %>
-          <%= user.name %>
+
+        <% find_all_tool_users(tool).each do |user| %>
+            <ul>
+              <li><%= user.name %></li>
+            </ul>
         <% end %>
       </p>
+
       <p><%= tool.available %> remaining</p>
     </div>
     <div class="col-md-3">

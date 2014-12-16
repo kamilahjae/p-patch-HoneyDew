@@ -1,4 +1,4 @@
 <h1><%= @post.name %></h1>
 <p>By <%= @post.author %></p>
 <img src="<%= @post.pic %>" height="300"><br>
-<%= link_to "Read the post on our site", post_url(@post.id, host: 'localhost', port: 3000) %>
+<%= link_to "Read the post on our site", post_url(@post.id, host: 'honey-dew.herokuapp.com') %>

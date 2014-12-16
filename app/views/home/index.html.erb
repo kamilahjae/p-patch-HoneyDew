@@ -2,24 +2,26 @@
     <h1>Current Weather in <%= @weather["name"] %></h1>
     <h2><%= @weather_condition %></h2>
     <div class="centered-content">
-      <% if @weather_condition = "mist" %>
-      <%= image_tag("http://openweathermap.org/img/w/50d.png") %>
-      <% elsif @weather_condition = "clear sky" %>
-      <%= image_tag("http://openweathermap.org/img/w/01d.png") %>
-      <% elsif @weather_condition = "few clouds" %>
-      <%= image_tag("http://openweathermap.org/img/w/02d.png") %>
-      <% elsif @weather_condition = "scattered clouds" %>
-      <%= image_tag("http://openweathermap.org/img/w/03d.png") %>
-      <% elsif @weather_condition = "broken clouds" %>
-      <%= image_tag("http://openweathermap.org/img/w/04d.png") %>
-      <% elsif @weather_condition = "shower rain" %>
-      <%= image_tag("http://openweathermap.org/img/w/09d.png") %>
-      <% elsif @weather_condition = "rain" %>
-      <%= image_tag("http://openweathermap.org/img/w/10d.png") %>
-      <% elsif @weather_condition = "thunderstorm" %>
-      <%= image_tag("http://openweathermap.org/img/w/11d.png") %>
-      <% elsif @weather_condition = "snow" %>
-      <%= image_tag("http://openweathermap.org/img/w/13d.png") %>
+      <% if @weather_condition == "mist" or @weather_condition == "Mist" %>
+        <%= image_tag("http://openweathermap.org/img/w/50d.png") %>
+      <% elsif @weather_condition == "Clear sky" %>
+        <%= image_tag("http://openweathermap.org/img/w/01d.png") %>
+      <% elsif @weather_condition == "Few Clouds" %>
+        <%= image_tag("http://openweathermap.org/img/w/02d.png") %>
+      <% elsif @weather_condition == "scattered clouds" %>
+        <%= image_tag("http://openweathermap.org/img/w/03d.png") %>
+      <% elsif @weather_condition == "Broken Clouds" %>
+        <%= image_tag("http://openweathermap.org/img/w/04d.png") %>
+      <% elsif @weather_condition == "Clouds" %>
+        <%= image_tag("http://openweathermap.org/img/w/03d.png") %>
+      <% elsif @weather_condition == "Shower Rain" %>
+        <%= image_tag("http://openweathermap.org/img/w/09d.png") %>
+      <% elsif @weather_condition == "Rain" %>
+        <%= image_tag("http://openweathermap.org/img/w/10d.png") %>
+      <% elsif @weather_condition == "Thunderstorm" %>
+        <%= image_tag("http://openweathermap.org/img/w/11d.png") %>
+      <% elsif @weather_condition == "Snow" %>
+        <%= image_tag("http://openweathermap.org/img/w/13d.png") %>
       <% end %>
     <h2><%= @weather["main"]["temp"].to_i %>˚ degrees Farenheit</h2>
     <p>High: <%= @weather["main"]["temp_max"].to_i %> F </p>

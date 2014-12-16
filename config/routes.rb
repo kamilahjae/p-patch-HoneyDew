@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root   "home#index"
+  
+  #indentity routes
+  resources :identities
 
   # post routes
   get    "/posts"          , to: "posts#index",   as: :posts

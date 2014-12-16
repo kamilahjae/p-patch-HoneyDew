@@ -1,19 +1,47 @@
-<h1>Current Weather in <%= @weather["name"] %></h1>
-<h2><%= @weather["weather"][0]["main"] %>
-  <h2><%= @weather["main"]["temp"].to_i %> degrees Farenheit</h2>
-  <p>High: <%= @weather["main"]["temp_max"].to_i %> F </p>
-  <p>Low: <%= @weather["main"]["temp_min"].to_i %> F</p>
-  <p>Wind: <%= convert_wind_to_mph(@weather["wind"]["speed"].to_i) %> MPH</p>
-  <p>Humidity: <%= @weather["main"]["humidity"] %>%</p>
+  <div class="round">
+    <h1>Current Weather in <%= @weather["name"] %></h1>
+    <h2><%= @weather_condition %></h2>
+    <div class="centered-content">
+      <% if @weather_condition = "mist" %>
+      <%= image_tag("http://openweathermap.org/img/w/50d.png") %>
+      <% elsif @weather_condition = "clear sky" %>
+      <%= image_tag("http://openweathermap.org/img/w/01d.png") %>
+      <% elsif @weather_condition = "few clouds" %>
+      <%= image_tag("http://openweathermap.org/img/w/02d.png") %>
+      <% elsif @weather_condition = "scattered clouds" %>
+      <%= image_tag("http://openweathermap.org/img/w/03d.png") %>
+      <% elsif @weather_condition = "broken clouds" %>
+      <%= image_tag("http://openweathermap.org/img/w/04d.png") %>
+      <% elsif @weather_condition = "shower rain" %>
+      <%= image_tag("http://openweathermap.org/img/w/09d.png") %>
+      <% elsif @weather_condition = "rain" %>
+      <%= image_tag("http://openweathermap.org/img/w/10d.png") %>
+      <% elsif @weather_condition = "thunderstorm" %>
+      <%= image_tag("http://openweathermap.org/img/w/11d.png") %>
+      <% elsif @weather_condition = "snow" %>
+      <%= image_tag("http://openweathermap.org/img/w/13d.png") %>
+      <% end %>
+    <h2><%= @weather["main"]["temp"].to_i %>˚ degrees Farenheit</h2>
+    <p>High: <%= @weather["main"]["temp_max"].to_i %> F </p>
+    <p>Low: <%= @weather["main"]["temp_min"].to_i %> F</p>
+    <p>Wind: <%= convert_wind_to_mph(@weather["wind"]["speed"].to_i) %> MPH</p>
+    <p>Humidity: <%= @weather["main"]["humidity"] %>%</p>
+    </div>
+  </div><!-- round -->
+<hr />
+  <h3>Five-Day Forecast</h3>
 
-  <h1>Five-Day Forecast</h1>
-
-  <% @forecast[1..6].each do |day| %> <!-- @forecast[0] is today -->
-  <p><%= Date.parse(day["day"]).strftime("%B %d, %Y") %></p>
-  <p><%= day["symbol"]["name"].capitalize %></p>
-  <p>High: <%= day["temperature"]["max"].to_i %> F</p>
-  <p>Low: <%= day["temperature"]["min"].to_i %> F</p>
-  <p>Wind: <%= convert_wind_to_mph(day["windSpeed"]["mps"]) %> MPH</p>
-  <p>Humidity: <%= day["humidity"]["value"] %>%</p>
-  --------------------------
-  <% end %>
+  <div class="centered-content">
+  <div class="centered-content col-xs-1"></div>
+    <% @forecast[1..6].each do |day| %> <!-- @forecast[0] is today -->
+    <div class="col-xs-2">
+    <p><b><%= Date.parse(day["day"]).strftime("%B %d, %Y") %></b></p>
+    <p><%= day["symbol"]["name"].capitalize %></p>
+    <p>High: <%= day["temperature"]["max"].to_i %> F</p>
+    <p>Low: <%= day["temperature"]["min"].to_i %> F</p>
+    <p>Wind: <%= convert_wind_to_mph(day["windSpeed"]["mps"]) %> MPH</p>
+    <p>Humidity: <%= day["humidity"]["value"] %>%</p>
+    </div>
+    <% end %>
+  <div class="centered-content col-xs-1"></div>
+  </div>

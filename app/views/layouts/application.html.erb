@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arimo|Leckerli+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -14,29 +16,44 @@
 
   <% if logged_in? %>
       <div class="logged_in">
-        <p><%= current_user.name %></p>
-        <p><%= link_to image_tag(current_user.pic, :class => "prof_pic"), user_path(current_user.id) %></p>
-      </div>
-      <%= button_to "Log Out", logout_path, :method => "get" %>
-      <%= button_to "Home", root_path, :method => "get" %>
-      <p><%= link_to "View our Community Calendar", "/activities" %></p>
-      <p><%= link_to "View our Blog", posts_path %></p>
-      <% if current_user && current_user.admin == true %>
-        <p><%= link_to "Create New Post", new_post_path %></p>
-      <% end %>
-      <p><%= link_to "View My Account", user_path(current_user.id) %></p>
+        <nav class="navbar navbar-default -fixed-top centered-content" role="navigation">
+          <div class="container">
+            <%= link_to image_tag(current_user.pic, :class => "prof_pic"), user_path(current_user.id) %><%= current_user.name %>
+            <%= link_to "Home", root_path, :method => "get" %>•
+              <%= link_to "Log Out", logout_path, :method => "get" %>•
+              <%= link_to "View our Community Calendar", "/activities" %>•
+              <%= link_to "View our Blog", posts_path %>•
+              <% if current_user && current_user.admin == true %>
+              <%= link_to "Create New Post", new_post_path %>•
+              <% end %>
+              <%= link_to "View My Account", user_path(current_user.id) %>•
 
-  <% else %>
-    <p>
-      Log in with Twitter: <%= link_to image_tag("twitter.png", :class => "login"), "/auth/twitter" %>
-    </p>
-  <% end %>
+              <% else %>
+              <p>
+                Log in with Twitter: <%= link_to image_tag("twitter.png", :class => "login"), "/auth/twitter" %>•
+                <strong>Don't use Twitter?</strong>
+                <%= link_to "Create an account", new_identity_path %>
+              </p>
+              <% end %>
+          </div>
+        </nav>
+      </div>
+      <br />
+      <br />
 
   <div id="flash-msg">
     <% flash.each do |name, msg| %> <!-- flash message provided by rails-->
     <%= content_tag :div, msg, id: "flash_#{name}" %>
     <% end %>
   </div>
+  <br />
+  <br />
+  <br />
+  <br />
+   <div class="centered-content"><%= image_tag("honeyDew.jpg", size: "80x50") %></div>
+
+    <h1 class="logo-font">Honey Dew</h1>
+
 
 <%= yield %>
 </div>

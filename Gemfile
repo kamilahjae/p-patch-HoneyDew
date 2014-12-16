@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-identity' 
 
 gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

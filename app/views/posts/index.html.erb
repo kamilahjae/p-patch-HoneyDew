@@ -1,20 +1,29 @@
 <% if logged_in? %>
-  <h1>HoneyDew Blog</h1>
+  <br />
+  <br />
+  <h1>Blog</h1>
+  <br />
 
+  <div class="centered-content">
   <% if @posts %>
     <% @posts.each do |post| %>
-      <h2><%= link_to(post.name, post_path(post.id)) %></h2>
-      <h3><%= post.author %></h3>
+      <h2><%= link_to(post.name, post_path(post.id)) %>
+      <small>By: <%= post.author %></small></h2>
       <!-- display date and disqus comment count -->
       <h5><%= Date.parse(post.created_at.to_s).strftime("%B %d, %Y") %> | <a href="/posts/<%= post.id %>#disqus_thread">Comments</a></h5>
+      <br />
+      <br />
       <%= post.content.slice(0..480).html_safe + "..." %><%= link_to "Read more", post_path(post.id) %>
       <% if current_user.admin %>
+      <br />
+      <br />
       <%= button_to "Edit", edit_post_path(post.id), :method => "get" %>
       <%= button_to "Delete", post_path(post.id), :method => "delete", data: {confirm: "Are you sure you want to delete this post?"} %>
       <% end %>
       <hr class="style-eight">
     <% end %>
   <% end %>
+  <div />
 
   <!-- disqus code for comment count: -->
   <script type="text/javascript">

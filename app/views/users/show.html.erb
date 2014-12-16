@@ -1,11 +1,20 @@
-<h1><%= @user.name %>'s Account</h1>
+<h1><%= @user.name.capitalize %>'s Account</h1>
+<br />
+<br />
 
-<p style="text-decoration: underline;">Your Info</p>
+<div class="centered-content">
+<p style="text-decoration: underline;"><em>Your Info:</em></p>
 <p><%= @user.name %></p>
 <p><%= @user.email %></p>
 <%= image_tag @user.pic, :class => "prof_pic" %>
+<br />
+<br />
 <%= button_to "Edit My Info", edit_user_path(@user.id), :method => "get" %>
+<br />
+<br />
+</div>
 
+<div class="centered-content">
 <h3>Tools I've Checked Out</h3>
 <% if @tools.empty? %>
   <p>No tools currently checked out.</p>
@@ -19,6 +28,4 @@
     <% end  %>
   </div>
 <% end %>
-
-
-<h3>info about events I've created</h3>
+</div> <!-- end of centered-content -->

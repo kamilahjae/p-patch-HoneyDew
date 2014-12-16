@@ -1,0 +1,7 @@
+<%= render 'shared/error_messages', object: @identity %>
+<h1>Login Here</h1>
+
+<%= form_for @identity, :url => "/auth/identity/register" do %>
+<%= render :partial => "shared/user_form", :locals => { :f => f } %>
+<%= f.submit "Submit" %>
+<% end %>

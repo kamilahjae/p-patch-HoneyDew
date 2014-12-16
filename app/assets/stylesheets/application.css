@@ -19,4 +19,53 @@
 
  h1, h2, h3, h4, h5, h6 {
   text-align: center;
+  font-family: 'Arimo', sans-serif;
+ }
+
+body {
+  font-family: 'Arimo', sans-serif;
+}
+
+p {
+  font-family: 'Arimo', sans-serif;
+}
+
+a {
+  color: green;
+}
+
+ .centered-content {
+   text-align: center;
+ }
+
+.centered-div {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  background-image: url("honeyDew.jpg");
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  /*margin: 0 auto;*/
+}
+
+.logo-font {
+  font-family: 'Leckerli One', cursive;
+}
+ /*.skyline {
+   background-image: url("skyline.jpeg");
+   background-repeat: no-repeat;
+   width: auto;
+   height: 100%;
+   margin: 0 auto;
+ }*/
+
+ .round {
+   opacity: 0.8;
+   width: 50%;
+   margin: 0 auto;
+   border-radius: 10px;
+   background-color: #d9f9ad;
  }

@@ -1,17 +1,22 @@
 <% if logged_in? %>
+<br />
+<br />
   <h1><%= @post.name %></h1>
 
   <h3>By <%= @post.author %></h3>
   <h5><%= Date.parse(@post.created_at.to_s).strftime("%B %d, %Y") %></h5>
+  <br />
+  <br />
 
+  <div class="centered-content">
   <%= image_tag(@post.pic, :class => "post_image") %>
-
   <%= @post.content.html_safe %>
-
+  <br />
+  <br />
   <% if current_user.admin %>
-    <%= button_to "Edit", edit_post_path, :method => "get" %>
-    <%= button_to "Delete", post_path(@post.id), :method => "delete", :class => "btn-danger", data: {confirm: "Are you sure you want to delete this post?"} %>
+    <%= button_to "Edit", edit_post_path, :method => "get" %> <%= button_to "Delete", post_path(@post.id), :method => "delete", :class => "btn-danger", data: {confirm: "Are you sure you want to delete this post?"} %>
   <% end %>
+</div>
 
   <!-- This is the disqus code: -->
   <div id="disqus_thread"></div>

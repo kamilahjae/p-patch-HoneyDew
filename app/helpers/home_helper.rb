@@ -6,4 +6,8 @@ module HomeHelper
     mph_wind.to_i
   end
 
+  def display_icon
+    
+  end
+
 end
